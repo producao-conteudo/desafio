@@ -58,7 +58,7 @@ Cras in tempus libero,
 
 Após termos nossa api desenvolvida, precisamos viabilizar uma interface frontend para nossos usuários interagirem.
 
-Nosso time de UX desenhou as [telas](https://www.sketch.com/s/3f91077d-21c0-4040-8fae-b89d69809d9b/a/Qb0ZjVe) e disponibilizou para você!
+Nosso time de UX desenhou as [telas](https://www.sketch.com/s/3f91077d-21c0-4040-8fae-b89d69809d9b) e disponibilizou para você!
 
 Dê preferência aos frameworks como o Vuetify para aproveitar os componentes já prontos.
 

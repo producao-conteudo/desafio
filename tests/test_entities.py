@@ -80,3 +80,11 @@ class TestCard(BaseTest):
     def test_text_field_type_is_str(self):
         """Assert that the text field's type is str."""
         assert self.field_type('text') == str
+
+    def test_has_tags_field(self):
+        """Assert that it has a field named 'tags'."""
+        assert self.has_field('tags')
+
+    def test_tags_field_type_is_list_of_tag(self):
+        """Assert that the text field's type is list of Tag entities."""
+        assert self.field_type('tags') == list[Tag]

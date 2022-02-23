@@ -1,5 +1,5 @@
 """Domain's entities."""
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
@@ -14,3 +14,4 @@ class Card:
     """Represents a card."""
 
     text: str
+    tags: list[Tag] = field(default_factory=list)

@@ -1,6 +1,6 @@
 [flake8]
 known-modules = :[entities]
-requirements-file = requirements-dev.txt
+requirements-file = requirements/development.txt
 requirements-max-depth = 2
 per-file-ignores =
     tests/*: S101

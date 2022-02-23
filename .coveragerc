@@ -1,0 +1,8 @@
+[run]
+source = source
+
+[report]
+show_missing = true
+fail_under = 100
+skip_covered = true
+skip_empty = true

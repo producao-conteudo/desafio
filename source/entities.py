@@ -7,7 +7,7 @@ from uuid import UUID, uuid4
 class Tag:
     """Represents a tag."""
 
-    text: str
+    name: str
     id: UUID = field(default_factory=uuid4)  # noqa: VNE003
 
 

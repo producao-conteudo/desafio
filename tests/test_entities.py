@@ -31,27 +31,27 @@ class TestTag(BaseTest):
     entity = Tag
 
     @fixture
-    def text(self):
-        """Return a tag text."""
-        return 'tag text test'
+    def name(self):
+        """Return a tag name."""
+        return 'test tag name'
 
     def test_is_dataclass(self):
         """Assert that it is a dataclass."""
         assert is_dataclass(self.entity)
 
-    def test_init(self, text):
+    def test_init(self, name):
         """Assert that it can be instantiated."""
-        tag = self.entity(text=text)
+        tag = self.entity(name=name)
 
         assert isinstance(tag, self.entity)
 
-    def test_has_text_field(self):
-        """Assert that it has a field named 'text'."""
-        assert self.has_field('text')
+    def test_has_name_field(self):
+        """Assert that it has a field named 'name'."""
+        assert self.has_field('name')
 
-    def test_text_field_type_is_str(self):
-        """Assert that the text field's type is str."""
-        assert self.field_type('text') == str
+    def test_name_field_type_is_str(self):
+        """Assert that the name field's type is str."""
+        assert self.field_type('name') == str
 
 
 class TestCard(BaseTest):

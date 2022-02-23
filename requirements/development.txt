@@ -1,3 +1,4 @@
+-r test.txt
 autopep8==1.6.0
 flake8==4.0.1
 flake8-bandit==2.1.2

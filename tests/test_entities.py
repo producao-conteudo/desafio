@@ -1,6 +1,7 @@
 """Unit tests for the domain's entities."""
 
 from dataclasses import dataclass, fields, is_dataclass
+from datetime import datetime
 from uuid import UUID
 
 from entities import Card, Tag
@@ -77,6 +78,14 @@ class TestCard(BaseTest):
     def test_has_text_field(self):
         """Assert that it has a field named 'text'."""
         assert self.has_field('text')
+
+    def test_has_created_at_field(self):
+        """Assert that it has a field named 'created_at'."""
+        assert self.has_field('created_at')
+
+    def test_created_at_field_type_is_datetime(self):
+        """Assert that the created_at field's type is datetime."""
+        assert self.field_type('created_at') == datetime
 
     def test_text_field_type_is_str(self):
         """Assert that the text field's type is str."""

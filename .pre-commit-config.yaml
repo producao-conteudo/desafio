@@ -10,3 +10,6 @@ repos:
       - id: check-added-large-files
       - id: no-commit-to-branch
         args: [--branch, main]
+      - id: check-docstring-first
+      - id: debug-statements
+      - id: double-quote-string-fixer

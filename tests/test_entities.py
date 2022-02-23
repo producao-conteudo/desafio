@@ -1,6 +1,7 @@
 """Unit tests for the domain's entities."""
 
 from dataclasses import dataclass, fields, is_dataclass
+from uuid import UUID
 
 from entities import Card, Tag
 from pytest import fixture
@@ -88,3 +89,11 @@ class TestCard(BaseTest):
     def test_tags_field_type_is_list_of_tag(self):
         """Assert that the text field's type is list of Tag entities."""
         assert self.field_type('tags') == list[Tag]
+
+    def test_has_id_field(self):
+        """Assert that it has a field named 'id'."""
+        assert self.has_field('id')
+
+    def test_id_field_type_is_uuid(self):
+        """Assert that the id field's type is list of Tag entities."""
+        assert self.field_type('id') == UUID

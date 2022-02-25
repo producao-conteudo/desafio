@@ -25,6 +25,10 @@ class BaseTest:
 
         return field.type
 
+    def test_is_dataclass(self):
+        """Assert that it is a dataclass."""
+        assert is_dataclass(self.entity)
+
 
 class TestTag(BaseTest):
     """Unit tests for the Tag entity."""
@@ -35,10 +39,6 @@ class TestTag(BaseTest):
     def name(self):
         """Return a tag name."""
         return 'test tag name'
-
-    def test_is_dataclass(self):
-        """Assert that it is a dataclass."""
-        assert is_dataclass(self.entity)
 
     def test_init(self, name):
         """Assert that it can be instantiated."""
@@ -64,10 +64,6 @@ class TestCard(BaseTest):
     def text(self):
         """Return a card text."""
         return 'card text test'
-
-    def test_is_dataclass(self):
-        """Assert that it is a dataclass."""
-        assert is_dataclass(self.entity)
 
     def test_init(self, text):
         """Assert that it can be instantiated."""

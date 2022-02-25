@@ -1,6 +1,7 @@
 [flake8]
-known-modules = :[entities]
+known-modules = :[entities,use_cases]
 requirements-file = requirements/development.txt
 requirements-max-depth = 2
 per-file-ignores =
-    tests/*: S101
+    tests/*: D107, S101
+    source/*: D107

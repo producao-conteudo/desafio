@@ -1,6 +1,7 @@
 """Unit tests for the application's use cases."""
 from pytest import raises
-from use_cases import CreateCard, CreateTag, ListCards, ReadCard, ReadTag
+from use_cases import (CreateCard, CreateTag, DeleteCard, DeleteTag, ListCards,
+                       ReadCard, ReadTag, UpdateCard, UpdateTag)
 
 
 class BaseTest:
@@ -58,6 +59,36 @@ class TestReadTag(BaseTest):
         repository.get.assert_called_once()
 
 
+class TestUpdateTag(BaseTest):
+    """Unit tests for the UpdateTag use case."""
+
+    use_case = UpdateTag
+
+    def test_execute_method_calls_update_method_from_repository(self, mocker):
+        """Assert that it calls the repository's update method."""
+        repository = mocker.Mock()
+
+        use_case = self.use_case(repository=repository)
+        use_case.execute(id=None, name=None)
+
+        repository.update.assert_called_once()
+
+
+class TestDeleteTag(BaseTest):
+    """Unit tests for the DeleteTag use case."""
+
+    use_case = DeleteTag
+
+    def test_execute_method_calls_remove_method_from_repository(self, mocker):
+        """Assert that it calls the repository's remove method."""
+        repository = mocker.Mock()
+
+        use_case = self.use_case(repository=repository)
+        use_case.execute(id=None)
+
+        repository.remove.assert_called_once()
+
+
 class TestCreateCard(BaseTest):
     """Unit tests for the CreateCard use case."""
 
@@ -88,8 +119,38 @@ class TestReadCard(BaseTest):
         repository.get.assert_called_once()
 
 
+class TestUpdateCard(BaseTest):
+    """Unit tests for the UpdateCard use case."""
+
+    use_case = UpdateCard
+
+    def test_execute_method_calls_update_method_from_repository(self, mocker):
+        """Assert that it calls the repository's update method."""
+        repository = mocker.Mock()
+
+        use_case = self.use_case(repository=repository)
+        use_case.execute(id=None, text=None, tags=[])
+
+        repository.update.assert_called_once()
+
+
+class TestDeleteCard(BaseTest):
+    """Unit tests for the DeleteCard use case."""
+
+    use_case = DeleteCard
+
+    def test_execute_method_calls_remove_method_from_repository(self, mocker):
+        """Assert that it calls the repository's remove method."""
+        repository = mocker.Mock()
+
+        use_case = self.use_case(repository=repository)
+        use_case.execute(id=None)
+
+        repository.remove.assert_called_once()
+
+
 class TestListCards(BaseTest):
-    """Unit tests for the ReadCard use case."""
+    """Unit tests for the ListCards use case."""
 
     use_case = ListCards
 

@@ -33,6 +33,22 @@ class ReadTag(UseCase):
         return self._repository.get(id)
 
 
+class UpdateTag(UseCase):
+    """Implements the use case of updating a tag."""
+
+    def execute(self, id, name):  # noqa: VNE003
+        """Return a card from the repository."""
+        return self._repository.update(id, name)
+
+
+class DeleteTag(UseCase):
+    """Implements the use of deleting a tag."""
+
+    def execute(self, id):  # noqa: VNE003
+        """Remove a tag from the repository."""
+        self._repository.remove(id)
+
+
 class CreateCard(UseCase):
     """Implements the use of creating a new card."""
 
@@ -51,8 +67,24 @@ class ReadCard(UseCase):
         return self._repository.get(id)
 
 
+class UpdateCard(UseCase):
+    """Implements the use case of updating a card."""
+
+    def execute(self, id, text, tags):  # noqa: VNE003
+        """Return a card from the repository."""
+        return self._repository.update(id, text, tags)
+
+
+class DeleteCard(UseCase):
+    """Implements the use of deleting a card."""
+
+    def execute(self, id):  # noqa: VNE003
+        """Remove a card from the repository."""
+        self._repository.remove(id)
+
+
 class ListCards(UseCase):
-    """Implements the use of listing cards filtering by tags."""
+    """Implements the use of listing cards, filtering by tags."""
 
     def execute(self, tags):
         """Return a card from the repository."""

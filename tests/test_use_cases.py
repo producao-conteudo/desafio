@@ -1,11 +1,9 @@
 """Unit tests for the application's use cases."""
-from abc import ABC
-
 from pytest import raises
 from use_cases import CreateCard, CreateTag, ReadCard, ReadTag
 
 
-class BaseTest(ABC):
+class BaseTest:
     """Base class for use cases' tests."""
 
     use_case = None

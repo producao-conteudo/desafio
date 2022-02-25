@@ -1,6 +1,6 @@
 """Unit tests for the application's use cases."""
 from pytest import raises
-from use_cases import CreateCard, CreateTag, ReadCard, ReadTag
+from use_cases import CreateCard, CreateTag, ListCards, ReadCard, ReadTag
 
 
 class BaseTest:
@@ -86,3 +86,18 @@ class TestReadCard(BaseTest):
         use_case.execute(id=None)
 
         repository.get.assert_called_once()
+
+
+class TestListCards(BaseTest):
+    """Unit tests for the ReadCard use case."""
+
+    use_case = ListCards
+
+    def test_execute_method_calls_list_method_from_repository(self, mocker):
+        """Assert that it calls the repository's list method."""
+        repository = mocker.Mock()
+
+        use_case = self.use_case(repository=repository)
+        use_case.execute(tags=[])
+
+        repository.list.assert_called_once()

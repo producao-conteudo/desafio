@@ -49,3 +49,11 @@ class ReadCard(UseCase):
     def execute(self, id):  # noqa: VNE003
         """Return a card from the repository."""
         return self._repository.get(id)
+
+
+class ListCards(UseCase):
+    """Implements the use of listing cards filtering by tags."""
+
+    def execute(self, tags):
+        """Return a card from the repository."""
+        return self._repository.list(tags)

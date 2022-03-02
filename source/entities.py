@@ -1,12 +1,11 @@
 """Domain's entities."""
-from abc import ABC
 from dataclasses import dataclass, field
 from datetime import datetime
 from uuid import UUID, uuid4
 
 
-@dataclass(kw_only=True)
-class Entity(ABC):
+@dataclass(kw_only=True, unsafe_hash=True)
+class Entity:
     """Represents a entity from the domain."""
 
     id: UUID = field(default_factory=uuid4)  # noqa: VNE003

@@ -1,4 +1,5 @@
 .pytest_cache/
+.tox/
 .vscode/
 .coverage
 __pycache__/

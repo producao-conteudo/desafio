@@ -10,24 +10,24 @@ class Repository(ABC):
     entity = Entity
 
     @abstractmethod
-    def save(self):
+    def save(self, entity):
         """Persist a new entity."""
 
     @abstractmethod
-    def get(self):
+    def get(self, id):  # noqa: VNE003
         """Retrieve an entity."""
 
     @abstractmethod
-    def update(self):
+    def update(self, id, **kwargs):  # noqa: VNE003
         """Update an entity and persist the changes."""
 
     @abstractmethod
-    def remove(self):
+    def remove(self, id):  # noqa: VNE003
         """Remove an entity and persist the changes."""
 
     @abstractmethod
     def list(self):
-        """Retrieve a list of cards."""
+        """Retrieve a list of entities."""
 
 
 class TagRepository(Repository):

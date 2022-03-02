@@ -7,6 +7,14 @@
     2. Using conda: `conda env create -f environment.yaml`
 2. Install the pre-commit hooks with `pre-commit install`
 
-## Running the tests
+## Running the code quality analysis tools
 
-* Run `pytest` to execute all tests.
+* Run `tox`.
+
+### Running only the linters
+
+* Run `tox -e lint` to lint the source code.
+
+### Running only the tests
+
+* Run `tox -e test` to execute all tests.

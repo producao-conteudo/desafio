@@ -1,0 +1,21 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches:
+      - main
+      - development
+
+jobs:
+  code-quality-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install -r requirements/development.txt
+
+      - name: Run code quality analysis tools
+        run: tox

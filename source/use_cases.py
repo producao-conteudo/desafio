@@ -12,11 +12,11 @@ class UseCase(ABC):
 
     @abstractmethod
     def execute(self):
-        """Implement call to repository method."""
+        """Call repository's method."""
 
 
 class CreateTag(UseCase):
-    """Implements the use of creating a new tag."""
+    """Use case of creating a new tag."""
 
     def execute(self, name):
         """Create a new tag and persist it in the repository."""
@@ -26,7 +26,7 @@ class CreateTag(UseCase):
 
 
 class ReadTag(UseCase):
-    """Implements the use of creating a new tag."""
+    """Use case of reading a tag."""
 
     def execute(self, id):  # noqa: VNE003
         """Return a tag from the repository."""
@@ -34,7 +34,7 @@ class ReadTag(UseCase):
 
 
 class UpdateTag(UseCase):
-    """Implements the use case of updating a tag."""
+    """Use case of updating a tag."""
 
     def execute(self, id, name):  # noqa: VNE003
         """Return a card from the repository."""
@@ -42,7 +42,7 @@ class UpdateTag(UseCase):
 
 
 class DeleteTag(UseCase):
-    """Implements the use of deleting a tag."""
+    """Use case of deleting a tag."""
 
     def execute(self, id):  # noqa: VNE003
         """Remove a tag from the repository."""
@@ -50,7 +50,7 @@ class DeleteTag(UseCase):
 
 
 class CreateCard(UseCase):
-    """Implements the use of creating a new card."""
+    """Use case of creating a new card."""
 
     def execute(self, text, tags):
         """Create a new card and persist it in the repository."""
@@ -60,7 +60,7 @@ class CreateCard(UseCase):
 
 
 class ReadCard(UseCase):
-    """Implements the use of reading a card."""
+    """Use case of reading a card."""
 
     def execute(self, id):  # noqa: VNE003
         """Return a card from the repository."""
@@ -68,7 +68,7 @@ class ReadCard(UseCase):
 
 
 class UpdateCard(UseCase):
-    """Implements the use case of updating a card."""
+    """Use case of updating a card."""
 
     def execute(self, id, text, tags):  # noqa: VNE003
         """Return a card from the repository."""
@@ -76,7 +76,7 @@ class UpdateCard(UseCase):
 
 
 class DeleteCard(UseCase):
-    """Implements the use of deleting a card."""
+    """Use case of deleting a card."""
 
     def execute(self, id):  # noqa: VNE003
         """Remove a card from the repository."""
@@ -84,7 +84,7 @@ class DeleteCard(UseCase):
 
 
 class ListCards(UseCase):
-    """Implements the use of listing cards, filtering by tags."""
+    """Use case of listing cards, filtering by tags."""
 
     def execute(self, tags):
         """Return a card from the repository."""

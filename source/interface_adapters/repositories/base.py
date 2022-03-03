@@ -31,12 +31,12 @@ class Repository(ABC):
 
 
 class TagRepository(Repository):
-    """Base class for tag repository."""
+    """Base class for tag entities repository."""
 
     entity = Tag
 
 
 class CardRepository(Repository):
-    """Base class for card repository."""
+    """Base class for card entities repository."""
 
     entity = Card

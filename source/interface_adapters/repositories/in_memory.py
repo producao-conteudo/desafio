@@ -8,7 +8,7 @@ class InMemoryRepository(Repository):
     """
     Base class for in-memory repositories.
 
-    The data is stored (privately) as a dictionary.
+    The data is stored (privately) in a dictionary.
     """
 
     _data = {}

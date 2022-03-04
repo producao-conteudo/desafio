@@ -11,10 +11,14 @@
 
 * Run `tox`.
 
-### Running only the linters
+### Running only the linters step
 
 * Run `tox -e lint` to lint the source code.
 
-### Running only the tests
+### Running only the tests step
 
 * Run `tox -e test` to execute all tests.
+
+### Running only the documentation build step
+
+* Run `tox -e documentation` to build the documentation files.

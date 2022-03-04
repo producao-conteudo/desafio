@@ -1,0 +1,4 @@
+Sphinx==4.4.0
+sphinx-autobuild==2021.3.14
+furo==2022.2.23
+graphviz==0.19.1

@@ -1,5 +1,7 @@
 """Base repositories."""
 from abc import ABC, abstractmethod
+from typing import Optional
+from uuid import UUID
 
 from entities import Card, Entity, Tag
 
@@ -10,33 +12,33 @@ class Repository(ABC):
     entity = Entity
 
     @abstractmethod
-    def save(self, entity):
+    def save(self, entity: Entity) -> None:
         """Persist a new entity."""
 
     @abstractmethod
-    def get(self, id):  # noqa: VNE003
+    def get(self, id) -> Optional[Entity]:  # noqa: VNE003
         """Retrieve an entity."""
 
     @abstractmethod
-    def update(self, id, **kwargs):  # noqa: VNE003
+    def update(self, id: UUID, **kwargs) -> None:  # noqa: VNE003
         """Update an entity and persist the changes."""
 
     @abstractmethod
-    def remove(self, id):  # noqa: VNE003
+    def remove(self, id: UUID) -> None:  # noqa: VNE003
         """Remove an entity and persist the changes."""
 
     @abstractmethod
-    def list(self):
+    def list(self) -> list[Entity]:
         """Retrieve a list of entities."""
 
 
 class TagRepository(Repository):
-    """Base class for tag repository."""
+    """Base class for tag entities repository."""
 
-    entity = Tag
+    entity: Entity = Tag
 
 
 class CardRepository(Repository):
-    """Base class for card repository."""
+    """Base class for card entities repository."""
 
-    entity = Card
+    entity: Entity = Card

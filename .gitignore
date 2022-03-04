@@ -1,5 +1,6 @@
 .pytest_cache/
 .tox/
 .vscode/
+documentation/build/
 .coverage
 __pycache__/

@@ -1,5 +1,9 @@
 """In-memory entities repository."""
 
+from typing import Dict, Optional
+from uuid import UUID
+
+from entities import Entity
 from interface_adapters.repositories.base import (CardRepository, Repository,
                                                   TagRepository)
 
@@ -11,20 +15,20 @@ class InMemoryRepository(Repository):
     The data is stored (privately) in a dictionary.
     """
 
-    _data = {}
+    _data: Dict = {}
 
     @classmethod
-    def save(cls, entity):
+    def save(cls, entity: Entity) -> None:
         """Persist a new entity."""
         cls._data[entity.id] = entity
 
     @classmethod
-    def get(cls, id):  # noqa: VNE003
+    def get(cls, id: UUID) -> Optional[Entity]:  # noqa: VNE003
         """Retrieve an entity by its id."""
         return cls._data.get(id)
 
     @classmethod
-    def update(cls, id, **kwargs):  # noqa: VNE003
+    def update(cls, id: UUID, **kwargs) -> None:  # noqa: VNE003
         """Update an entity and persist the changes."""
         entity = cls.get(id)
 
@@ -34,7 +38,7 @@ class InMemoryRepository(Repository):
             cls.save(updated_entity)
 
     @classmethod
-    def remove(cls, id):  # noqa: VNE003
+    def remove(cls, id: UUID) -> None:  # noqa: VNE003
         """Remove an entity and persist the changes."""
         entity = cls.get(id)
 
@@ -42,7 +46,7 @@ class InMemoryRepository(Repository):
             del cls._data[entity.id]
 
     @classmethod
-    def list(cls):
+    def list(cls) -> list[Entity]:
         """Retrieve a list of entities."""
         return list(cls._data.values())
 

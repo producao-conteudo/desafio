@@ -1,30 +1,31 @@
 """Unit tests for the application's use cases."""
 from pytest import raises
+from pytest_mock import MockerFixture
 from use_cases import (CreateCard, CreateTag, DeleteCard, DeleteTag, ListCards,
-                       ReadCard, ReadTag, UpdateCard, UpdateTag)
+                       ReadCard, ReadTag, UpdateCard, UpdateTag, UseCase)
 
 
 class BaseTest:
     """Base class for use cases' tests."""
 
-    use_case = None
+    use_case: UseCase
 
-    def has_method(self, name):
+    def has_method(self, name: str) -> None:
         """Check if it has a specific method."""
         return callable(getattr(self.use_case, name, None))
 
-    def test_init_without_arguments(self):
+    def test_init_without_arguments(self) -> None:
         """Assert that it can't be instantiated without arguments."""
         with raises(TypeError) as _:
             self.use_case()
 
-    def test_init_with_arguments(self, mocker):
+    def test_init_with_arguments(self, mocker: MockerFixture) -> None:
         """Assert that it can be instantiated with arguments."""
         use_case = self.use_case(repository=mocker.Mock())
 
         assert isinstance(use_case, self.use_case)
 
-    def test_has_execute_method(self):
+    def test_has_execute_method(self) -> None:
         """Assert that it has a method named 'execute'."""
         assert self.has_method('execute')
 
@@ -34,7 +35,10 @@ class TestCreateTag(BaseTest):
 
     use_case = CreateTag
 
-    def test_execute_method_calls_save_method_from_repository(self, mocker):
+    def test_execute_method_calls_save_method_from_repository(
+        self,
+        mocker,
+    ) -> None:
         """Assert that it calls the repository's save method."""
         repository = mocker.Mock()
 
@@ -49,7 +53,10 @@ class TestReadTag(BaseTest):
 
     use_case = ReadTag
 
-    def test_execute_method_calls_get_method_from_repository(self, mocker):
+    def test_execute_method_calls_get_method_from_repository(
+        self,
+        mocker: MockerFixture,
+    ) -> None:
         """Assert that it calls the repository's get method."""
         repository = mocker.Mock()
 
@@ -64,7 +71,10 @@ class TestUpdateTag(BaseTest):
 
     use_case = UpdateTag
 
-    def test_execute_method_calls_update_method_from_repository(self, mocker):
+    def test_execute_method_calls_update_method_from_repository(
+        self,
+        mocker: MockerFixture,
+    ) -> None:
         """Assert that it calls the repository's update method."""
         repository = mocker.Mock()
 
@@ -79,7 +89,10 @@ class TestDeleteTag(BaseTest):
 
     use_case = DeleteTag
 
-    def test_execute_method_calls_remove_method_from_repository(self, mocker):
+    def test_execute_method_calls_remove_method_from_repository(
+        self,
+        mocker: MockerFixture,
+    ) -> None:
         """Assert that it calls the repository's remove method."""
         repository = mocker.Mock()
 
@@ -94,7 +107,10 @@ class TestCreateCard(BaseTest):
 
     use_case = CreateCard
 
-    def test_execute_method_calls_save_method_from_repository(self, mocker):
+    def test_execute_method_calls_save_method_from_repository(
+        self,
+        mocker: MockerFixture,
+    ) -> None:
         """Assert that it calls the repository's save method."""
         repository = mocker.Mock()
 
@@ -109,7 +125,10 @@ class TestReadCard(BaseTest):
 
     use_case = ReadCard
 
-    def test_execute_method_calls_get_method_from_repository(self, mocker):
+    def test_execute_method_calls_get_method_from_repository(
+        self,
+        mocker: MockerFixture,
+    ) -> None:
         """Assert that it calls the repository's get method."""
         repository = mocker.Mock()
 
@@ -124,7 +143,10 @@ class TestUpdateCard(BaseTest):
 
     use_case = UpdateCard
 
-    def test_execute_method_calls_update_method_from_repository(self, mocker):
+    def test_execute_method_calls_update_method_from_repository(
+        self,
+        mocker: MockerFixture,
+    ) -> None:
         """Assert that it calls the repository's update method."""
         repository = mocker.Mock()
 
@@ -139,7 +161,10 @@ class TestDeleteCard(BaseTest):
 
     use_case = DeleteCard
 
-    def test_execute_method_calls_remove_method_from_repository(self, mocker):
+    def test_execute_method_calls_remove_method_from_repository(
+        self,
+        mocker: MockerFixture,
+    ) -> None:
         """Assert that it calls the repository's remove method."""
         repository = mocker.Mock()
 
@@ -154,7 +179,10 @@ class TestListCards(BaseTest):
 
     use_case = ListCards
 
-    def test_execute_method_calls_list_method_from_repository(self, mocker):
+    def test_execute_method_calls_list_method_from_repository(
+        self,
+        mocker: MockerFixture,
+    ) -> None:
         """Assert that it calls the repository's list method."""
         repository = mocker.Mock()
 

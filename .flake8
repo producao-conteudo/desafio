@@ -1,5 +1,5 @@
 [flake8]
-known-modules = :[entities,use_cases,interface_adapters]
+known-modules = :[entities,use_case_interactors,interface_adapters,settings]
 requirements-file = requirements/development.txt
 requirements-max-depth = 2
 per-file-ignores =

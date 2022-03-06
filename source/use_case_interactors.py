@@ -1,14 +1,15 @@
-"""Application's use cases."""
+"""Application's use case interactors."""
 from abc import ABC, abstractmethod
 from typing import Any, Optional
 from uuid import UUID
 
 from entities import Card, Tag
 from interface_adapters.repositories import Repository
+from settings import CARD_REPOSITORY, TAG_REPOSITORY
 
 
-class UseCase(ABC):
-    """Base class for use cases."""
+class UseCaseInteractor(ABC):
+    """Base class for use case interactors."""
 
     def __init__(self, repository: Repository):
         self._repository = repository
@@ -18,7 +19,14 @@ class UseCase(ABC):
         """Call repository's method."""
 
 
-class CreateTag(UseCase):
+class TagUseCaseInteractor(UseCaseInteractor):
+    """Base class for tag use case interactors."""
+
+    def __init__(self):
+        super().__init__(repository=TAG_REPOSITORY)
+
+
+class CreateTag(TagUseCaseInteractor):
     """Use case of creating a new tag."""
 
     def execute(self, name: str) -> None:
@@ -28,7 +36,7 @@ class CreateTag(UseCase):
         self._repository.save(tag)
 
 
-class ReadTag(UseCase):
+class ReadTag(TagUseCaseInteractor):
     """Use case of reading a tag."""
 
     def execute(self, id: UUID) -> Optional[Tag]:  # noqa: VNE003
@@ -36,7 +44,7 @@ class ReadTag(UseCase):
         return self._repository.get(id)
 
 
-class UpdateTag(UseCase):
+class UpdateTag(TagUseCaseInteractor):
     """Use case of updating a tag."""
 
     def execute(self, id: UUID, name: str) -> None:  # noqa: VNE003
@@ -44,7 +52,7 @@ class UpdateTag(UseCase):
         self._repository.update(id, name)
 
 
-class DeleteTag(UseCase):
+class DeleteTag(TagUseCaseInteractor):
     """Use case of deleting a tag."""
 
     def execute(self, id: UUID) -> None:  # noqa: VNE003
@@ -52,7 +60,14 @@ class DeleteTag(UseCase):
         self._repository.remove(id)
 
 
-class CreateCard(UseCase):
+class CardUseCaseInteractor(UseCaseInteractor):
+    """Base class for card use case interactors."""
+
+    def __init__(self):
+        super().__init__(repository=CARD_REPOSITORY)
+
+
+class CreateCard(CardUseCaseInteractor):
     """Use case of creating a new card."""
 
     def execute(self, text: str, tags: list[Tag]) -> None:
@@ -62,7 +77,7 @@ class CreateCard(UseCase):
         self._repository.save(card)
 
 
-class ReadCard(UseCase):
+class ReadCard(CardUseCaseInteractor):
     """Use case of reading a card."""
 
     def execute(self, id: UUID) -> Optional[Card]:  # noqa: VNE003
@@ -70,7 +85,7 @@ class ReadCard(UseCase):
         return self._repository.get(id)
 
 
-class UpdateCard(UseCase):
+class UpdateCard(CardUseCaseInteractor):
     """Use case of updating a card."""
 
     def execute(
@@ -83,7 +98,7 @@ class UpdateCard(UseCase):
         self._repository.update(id, text, tags)
 
 
-class DeleteCard(UseCase):
+class DeleteCard(CardUseCaseInteractor):
     """Use case of deleting a card."""
 
     def execute(self, id: UUID) -> None:  # noqa: VNE003
@@ -91,7 +106,7 @@ class DeleteCard(UseCase):
         self._repository.remove(id)
 
 
-class ListCards(UseCase):
+class ListCards(CardUseCaseInteractor):
     """Use case of listing cards, filtering by tags."""
 
     def execute(self, tags: list[Tag]) -> list[Card]:

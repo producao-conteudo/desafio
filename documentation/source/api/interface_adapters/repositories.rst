@@ -2,6 +2,7 @@ Repositories
 ============
 
 .. inheritance-diagram:: interface_adapters.repositories.in_memory
+   :top-classes: interface_adapters.repositories.base.Repository
    :parts: 1
    :caption: Relationship diagram
 

@@ -5,5 +5,5 @@ API reference
    :maxdepth: 1
 
    entities
-   use_cases
+   use_case_interactors
    interface_adapters/index
